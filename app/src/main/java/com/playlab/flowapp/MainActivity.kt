@@ -23,11 +23,14 @@ class MainActivity : AppCompatActivity() {
             adapter = MainAdapter()
         }
 
-        lifecycleScope.launch {
+        /*lifecycleScope.launch {
             viewModel.getLanguages().collect { language ->
                 mainAdapter.addLanguage(language)
             }
-        }
+        }*/
 
+        viewModel.languagesData.observe(this) { language ->
+            mainAdapter.addLanguage(language)
+        }
     }
 }
